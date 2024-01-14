@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Islam 365</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -13,58 +13,75 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa&display=swap" rel="stylesheet">
     <style>
-        td {
+        body{
+
+         background-color: rgb(236, 236, 236) 
+
+        }
+
+       *{
             font-family: 'Amiri Quran', serif;
         }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        p{
+            font-size: {40px}
+        }
+
+        .bghov{
+            background-color: white;
+            transition: background-color 1s ease 0s;
+        }
+        .bghov:hover{
+            background-color: #2c99ff;
+
+        }
+        .htt{
+            color: #2c99ff;
+        }
+        .bghov:hover .htt{
+         color: white;
+        }
+
     </style>
 
 </head>
 
-<body>
+<body >
 
-    <div class="container">
+    <nav class="navbar bg-body-tertiary bg-primary border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid justify-content-center">
+            <a class="navbar-brand " style="font-size: 40px;" href="../quran/">Islam 365</a>
+       
+         
+        </div>
+    </nav><br><br><br>
 
-
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Surah Name</th>
-                    <th scope="col">Surah Name Meaning</th>
-                    <th scope="col">Surah English Name</th>
-                    {{-- <th scope="col">Verses</th> --}}
-                    <th scope="col">RevealationType</th>
-                    <th scope="col">ReadSurah
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-              
+    <div class="container bg-light rounded">
+                <h1 class="text-center mt-5 mb-5 pt-5">بِسْمِ ٱللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
               @foreach ($surahdata as $dataa)
-                    <tr>
-
-                        <td>{{ $dataa['number'] }} </td>
-                        <td>{{ $dataa['name'] }} </td>
-                        <td>{{ $dataa['englishName'] }} </td>
-                        <td>{{ $dataa['englishNameTranslation'] }} </td>
-                        {{-- <td>{{ $dataa['numberOfAyahs'] }} </td> --}}
-                        <td>{{ $dataa['revelationType'] }} </td>
+              
+        
+                <a href="{{ url('ayats/' . $dataa['number'])}}">
+                    <div class=" m-3 border p-3 bghov">
+                        <div class="row">
+                          <div class="col-md-6 ">
+                            <h3 class="htt">{{ $dataa['number'] }}. {{ $dataa['englishName'] }} ({{ $dataa['englishNameTranslation'] }})</h3>
+                            <p class="h5 htt">{{ $dataa['numberOfAyahs']}} Ayahs</p>
+                          </div>
+                          <div class="col-md-6 text-end">
+                            <h3 class="arabic htt">{{ $dataa['name'] }}</h3>
+                            <p class="h5 htt">{{ $dataa['numberOfAyahs']}}  آيات</p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
                     
-                        @foreach ($dataa['ayahs'] as $ayah)
-                     @if ($dataa['surahs']['number'] . $ayah['number'])
-  
-                        <button>  {{ $ayah['text'] }} </button>
-                     @endif
-                    @endforeach
-                   
-                 
-
-
-
-                    </tr>
                 @endforeach
-            </tbody>
-        </table>
+     
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

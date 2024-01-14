@@ -18,8 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get("quran/", [AppBackend::class, "getData"]  );
+Route::get('ayats/{idNum}',[AppBackend::class,"ayahData"]);
 
-// Route to handle redirection to a specific ayah of a surah
-Route::get('/ayah/{surah}/{ayah}', [AppBackend::class, 'redirectToAyah'])->name('redirect-to-ayah');
 
 
