@@ -33,7 +33,7 @@
 
         .bghov{
             background-color: white;
-            transition: background-color 1s ease 0s;
+            transition: background-color 0.5s ease-in-out;
         }
         .bghov:hover{
             background-color: #2c99ff;
